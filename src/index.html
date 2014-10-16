@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>+Otros</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link href='http://fonts.googleapis.com/css?family=Oswald&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<section id="page-one">
+    <div class="container">
+        <div class="slides">
+            <div class="slides-container">
+                <img src="img/placements/ciudad1_1382x778.jpeg" alt="">
+                <img src="img/placements/animal1_1382x778.jpeg" alt="">
+                <img src="img/placements/gato3_1382x778.jpeg" alt="">
+            </div>
+        </div>
+        <div class="phrase-container"
+             data-_sectionone-start="bottom:70px;opacity:1;"
+             data-_middleonetwo-start="bottom:240px;opacity:0;">
+            <p>LOREM IPSUM DOLOR SIT AMET.</p>
+
+            <p>SED PHARETRA ULLAMCORPER NISL EU.</p>
+
+            <p>ALIQUAM AC NUNC AT QUAM.</p>
+        </div>
+    </div>
+    <a class="btn next" href="#page-two"></a>
+</section>
+<section id="page-two">
+    <div class="container">
+        <div class="video-container">
+            <video id="video-element" loop=""
+                   poster="https://cdn.honey.is/static/1.0/img/marketing/v2/marketing_v2_hero_index3.jpg">
+                <source src="https://cdn.honey.is/static/1.0/video/Honey_Loop_v3-Huge_720p_5000kps.webmhd.webm"
+                        type="video/webm">
+                <source src="https://cdn.honey.is/static/1.0/video/Honey_Loop_v3-Huge_720p_5000kps.mp4.mp4"
+                        type="video/mp4">
+                <source src="https://cdn.honey.is/static/1.0/video/Honey_Loop_v3-Huge_720p_5000kps.oggtheora.ogv"
+                        type="video/ogg">
+            </video>
+        </div>
+        <div class="phrase-container"
+             data-_middleonetwo-start="bottom:-500px;opacity:0;"
+             data-_sectiontwo-start="bottom:70px;opacity:1;"
+             data-_middletwothree-start="bottom:240px;opacity:0;">
+            <p>LOREM IPSUM DOLOR SIT AMET.</p>
+
+            <p>SED PHARETRA ULLAMCORPER NISL EU.</p>
+
+            <p>ALIQUAM AC NUNC AT QUAM.</p>
+        </div>
+    </div>
+    <a class="btn next" href="#page-three"></a>
+</section>
+<section id="page-three">
+    <div class="slides">
+        <div class="slides-container">
+            <img src="img/placements/ciudad3_1382x778.jpeg" alt="">
+            <img src="img/placements/gato2_1382x778.jpeg" alt="">
+            <img src="img/placements/gato3_1382x778.jpeg" alt="">
+        </div>
+    </div>
+    <div class="container">
+        <div class="phrase-container"
+             data-_middletwothree-start="bottom:-500px;opacity:0;"
+             data-_sectionthree-start="bottom:70px;opacity:1;">
+            <p>LOREM IPSUM DOLOR SIT AMET.</p>
+
+            <p>SED PHARETRA ULLAMCORPER NISL EU.</p>
+
+            <p>ALIQUAM AC NUNC AT QUAM.</p>
+        </div>
+    </div>
+</section>
+<section id="page-whois" class="sidekick-page close">
+    <div class="container">
+    </div>
+</section>
+<section id="page-contact" class="sidekick-page close">
+    <div class="container">
+        <div class="contact-info">
+            <address class="contact-method"><i class="icon"></i>Costa Rica 4684 27&deg;</address>
+            <span class="contact-method phone"><i class="icon"></i>&plus;54 9 11 4831 8992</span>
+            <span class="contact-method email"><i class="icon"></i>info@masotros.com</span>
+        </div>
+        <div class="map-container">&emsp;</div>
+    </div>
+</section>
+<nav>
+    <div class="header-logo">
+        <a class="btn-logo" href="index.html"></a>
+    </div>
+    <div class="footer-buttons-left">
+        <a class="btn-nav-left btn-nav-plus" href="#"></a>
+        <a class="btn-nav-left btn-sidekick-page btn-nav-whois" href="#page-whois"></a>
+        <a class="btn-nav-left btn-sidekick-page btn-nav-contact" href="#page-contact"></a>
+    </div>
+</nav>
+
+<script src="js/requireJS/2.1.10/require.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUz_LNTnewaC0E0w5zDPTXkNtstLl_hys&sensor=false"></script>
+<script type="application/javascript">
+    require.config({
+        baseUrl: 'js',
+        paths: {
+            jquery: 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min',
+            modernizr: 'modernizr/2.7.1/modernizr.min',
+            main: 'main/1.0.0/main',
+            mainUI: 'mainUI/1.0.0/mainUI',
+            mapUI: 'mapUI/1.0.0/mapUI',
+            bindFirst: 'bindFirst/0.2.3/jquery.bind-first.min',
+            easing: 'easing/1.0.0/easing',
+            mousewheel: 'mousewheel/3.1.9/jquery.mousewheel',
+            superSlides: 'superslides/0.6.3/jquery.superslides.min',
+            skrollr: 'skrollr/0.6.22/skrollr'
+
+        }
+    });
+    require(['easing', 'mainUI', 'superSlides', 'mapUI']);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.masOtros.web</groupId>
+    <artifactId>mainWebsite</artifactId>
+    <version>1.8.0</version>
+    <packaging>rpm</packaging>
+
+    <properties>
+        <rpm.webProject.directory>/home/apache/masOtros-mainSite</rpm.webProject.directory>
+    </properties>
+
+    <name>Main Website Mas Otros</name>
+    <description>Este es el sitio principal para masOtros.</description>
+
+    <organization>
+        <name>Martin Pliego</name>
+        <url>http://www.pliegosite.com/</url>
+    </organization>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>2.1-alpha-3</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>generate-rpm</id>
+                        <goals>
+                            <goal>rpm</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <copyright>2014, SWWDC</copyright>
+                    <distribution>PliegoSite</distribution>
+                    <group>Web</group>
+                    <changelogFile>CHANGELOG</changelogFile>
+                    <defineStatements>
+                        <defineStatement>_unpackaged_files_terminate_build 0</defineStatement>
+                    </defineStatements>
+                    <mappings>
+                        <mapping>
+                            <directory>${rpm.webProject.directory}</directory>
+                            <filemode>775</filemode>
+                            <username>apache</username>
+                            <groupname>apache</groupname>
+                            <sources>
+                                <source>
+                                    <location>src</location>
+                                </source>
+                            </sources>
+                        </mapping>
+                    </mappings>
+                    <preinstallScriptlet>
+                        <script>mkdir -p ${rpm.webProject.directory}</script>
+                    </preinstallScriptlet>
+                    <postinstallScriptlet>
+                        <script>chown apache:apache ${rpm.webProject.directory};
+                            chcon -R --type=httpd_sys_rw_content_t ${rpm.webProject.directory}
+                        </script>
+                    </postinstallScriptlet>
+                    <!--postremoveScriptlet>
+                        <script>rm -Rfv ${rpm.webProject.directory}</script>
+                    </postremoveScriptlet-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <distributionManagement>
+        <repository>
+            <id>pliegosite-releases</id>
+            <name>Releases Repository</name>
+            <url>https://repo.pliegosite.vpn/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
+
+</project>

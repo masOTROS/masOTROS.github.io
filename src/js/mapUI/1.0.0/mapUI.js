@@ -15,14 +15,14 @@ define(['jquery', 'bindFirst' , 'main'], function ($, bindFirst, main, undefined
                 animationTime: 1000,
                 clickedElem: undefined,
                 mapOptions: {
-                    center: new google.maps.LatLng(-34.588563, -58.426555),
+                    center: new google.maps.LatLng(-34.5854628, -58.4290632),
                     zoom: 17,
                     styles:undefined
                 },
                 mapElement: undefined,
                 markerOptions: {
                     position: new google.maps.LatLng(
-                        -34.588563, -58.426555
+                        -34.5854628, -58.4290632
                     ),
                     map: undefined,
                     icon: 'img/icons/map_marker.png'

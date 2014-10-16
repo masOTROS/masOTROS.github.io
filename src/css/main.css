@@ -152,6 +152,45 @@ section a.next {
     background-color: grey;
 }
 
+#page-whois .container{
+    display: table;
+}
+
+.whois-info {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    color: #ffffff;
+}
+
+.soldiers-row{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto; 
+}
+
+.soldier{
+    opacity:0.8;
+    float:left;
+    margin:10px;
+    width:20%;
+}
+
+.soldier-label > p{
+    font-family: 'Oswald', sans-serif;
+    margin:0;
+    padding:0;
+}
+.circular {
+    max-width: 144px;
+    max-height: 144px;
+    border-radius: 77px;
+    -webkit-border-radius: 77px;
+    -moz-border-radius: 77px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    }
 /* page-contact */
 
 #page-contact {

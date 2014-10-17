@@ -170,8 +170,8 @@ section a.next {
 }
 
 .soldier{
+    display:inline-block;
     opacity:0.8;
-    float:left;
     margin:10px;
     width:20%;
 }
@@ -182,11 +182,11 @@ section a.next {
     padding:0;
 }
 .circular {
-    max-width: 144px;
-    max-height: 144px;
-    border-radius: 77px;
-    -webkit-border-radius: 77px;
-    -moz-border-radius: 77px;
+    max-width: 60%;
+    height:auto;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
     box-shadow: 0 0 8px rgba(0, 0, 0, .8);
     -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
     -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);

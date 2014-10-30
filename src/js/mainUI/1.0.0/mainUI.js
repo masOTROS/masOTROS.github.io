@@ -24,7 +24,9 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
             sectionOne: '#page-one',
             sectionTwo: '#page-two',
             sectionThree: '#page-three',
-            videoElement: '#video-element'
+            sectionFour: '#page-four',
+            loopElement: '#loop-element',
+            reelElement: '#reel-element'
 
         },
         data = {
@@ -240,30 +242,48 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
 
     function onPageChanged(event, sectionId) {
         if (sectionId == selector.sectionOne) {
-            playVideo(true);
+            playVideo(true,"loopElement");
             $(selector.sectionTwo + ' .slides').superslides('stop');
             $(selector.sectionThree + ' .slides').superslides('stop');
+            playVideo(false, "reelElement");
         } else if (sectionId == selector.sectionTwo) {
-            playVideo(false);
+            playVideo(false,"loopElement");
             $(selector.sectionTwo + ' .slides').superslides('start');
             $(selector.sectionThree + ' .slides').superslides('stop');
+            playVideo(false, "reelElement");
         } else if (sectionId == selector.sectionThree) {
-            playVideo(false);
+            playVideo(false,"loopElement");
             $(selector.sectionTwo + ' .slides').superslides('stop');
             $(selector.sectionThree + ' .slides').superslides('start');
+            playVideo(false, "reelElement");
+        } else if (sectionId == selector.sectionFour) {
+            playVideo(false,"loopElement");
+            $(selector.sectionTwo + ' .slides').superslides('stop');
+            $(selector.sectionThree + ' .slides').superslides('start');
+            playVideo(true, "reelElement");
         } else {
             $(selector.sectionOne + ' .slides').superslides('stop');
-            playVideo(false);
+            playVideo(false,"loopElement");
             $(selector.sectionThree + ' .slides').superslides('stop');
+            playVideo(false, "reelElement");
         }
     }
 
-    function playVideo(status) {
+    function playVideo(status,element) {
         try {
-            if (status) {
-                $(selector.videoElement).get(0).play();
-            } else {
-                $(selector.videoElement).get(0).pause();
+            if(element == "loopElement"){
+                if (status) {
+                    $(selector.loopElement).get(0).play();
+                } else {
+                    $(selector.loopElement).get(0).pause();
+                }
+            } else{
+                if (status) {
+                    console.log(selector.reelElement);
+                    $(selector.reelElement).get(0).play();
+                } else {
+                    $(selector.reelElement).get(0).pause();
+                }
             }
         } catch (e) {
         }

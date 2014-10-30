@@ -162,8 +162,20 @@ section a.next {
     background-image: Url(../img/placements/ciudad3_1382x778.jpeg);
 }
 
+/*Page Four*/
+#page-four{
 
-
+}
+#page-four video {
+    height: auto;
+    overflow: hidden;
+    z-index: 1;
+    min-width: 100%;
+    min-height: 100%;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
 
 /* page-contact */
 

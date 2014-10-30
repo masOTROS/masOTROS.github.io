@@ -76,8 +76,12 @@ section a.next {
     background-color: rgba(0,0,0,0.3);;
 }
 
+.disabled{
+    pointer-events: none;
+    cursor: default;
+}
 .btn-nav-plus {
-   /* background: url(../img/icons/nav_icons.png) 0 0;*/
+    /*background: url(../img/icons/nav_icons.png) 0 0;*/
 }
 
 .btn-nav-whois {

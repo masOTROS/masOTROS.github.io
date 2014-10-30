@@ -73,7 +73,20 @@ section a.next {
 }
 
 .btn-nav-left.selected {
-    background-color: rgba(0,0,0,0.3);;
+    background-color: rgba(0,0,0,0.3);
+}
+
+/*content inside slider*/
+.slides .container{
+    text-align:right;
+    background: rgba(0,0,0,0.4);
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    padding: 4px 4% 4px 10px;
+    position:absolute;
+    color:white;
+    right:0;
+    top:200px;
 }
 
 .disabled{

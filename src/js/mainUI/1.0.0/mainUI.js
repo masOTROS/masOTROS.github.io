@@ -240,16 +240,16 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
 
     function onPageChanged(event, sectionId) {
         if (sectionId == selector.sectionOne) {
-            $(selector.sectionOne + ' .slides').superslides('stop');
             playVideo(true);
+            $(selector.sectionTwo + ' .slides').superslides('stop');
             $(selector.sectionThree + ' .slides').superslides('stop');
         } else if (sectionId == selector.sectionTwo) {
-            $(selector.sectionOne + ' .slides').superslides('stop');
-            playVideo(true);
+            playVideo(false);
+            $(selector.sectionTwo + ' .slides').superslides('start');
             $(selector.sectionThree + ' .slides').superslides('stop');
         } else if (sectionId == selector.sectionThree) {
-            $(selector.sectionOne + ' .slides').superslides('stop');
             playVideo(false);
+            $(selector.sectionTwo + ' .slides').superslides('stop');
             $(selector.sectionThree + ' .slides').superslides('start');
         } else {
             $(selector.sectionOne + ' .slides').superslides('stop');

@@ -240,8 +240,8 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
 
     function onPageChanged(event, sectionId) {
         if (sectionId == selector.sectionOne) {
-            $(selector.sectionOne + ' .slides').superslides('start');
-            playVideo(false);
+            $(selector.sectionOne + ' .slides').superslides('stop');
+            playVideo(true);
             $(selector.sectionThree + ' .slides').superslides('stop');
         } else if (sectionId == selector.sectionTwo) {
             $(selector.sectionOne + ' .slides').superslides('stop');

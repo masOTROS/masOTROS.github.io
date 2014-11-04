@@ -26,7 +26,8 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
             sectionThree: '#page-three',
             sectionFour: '#page-four',
             loopElement: '#loop-element',
-            reelElement: '#reel-element'
+            reelElement: '#reel-element',
+            navBar : '#navbar'
 
         },
         data = {
@@ -184,17 +185,18 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
         event.preventDefault();
         var elem = $(event.target),
             href = elem.attr('href');
+        itemId = selector.navBar;
         if (data.sideKick.pageOpened == undefined) {
             elem.addClass('selected');
-            openSideKickPage(href);
+            openSideKickPage(href, itemId);
         } else if (href == data.sideKick.pageOpened) {
-            closeSideKickPage();
+            closeSideKickPage(itemId);
         } else {
             elem.addClass('selected');
             main.registerEvent(main.events.onSideKickPageClosed, function () {
                 openSideKickPage(href);
             }, true);
-            closeSideKickPage();
+            closeSideKickPage(itemId);
         }
     }
 
@@ -202,11 +204,12 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
      * Abre una ventana agena al sitio.
      * @param pageId el id de la pagina(section) a abrir.
      */
-    function openSideKickPage(pageId) {
+    function openSideKickPage(pageId, itemId) {
         var page = $(pageId).first();
         if (page.length > 0) {
             if (data.sideKick.pageOpened == undefined || pageId != data.sideKick.pageOpened) {
                 main.enableScroll(false);
+                $(itemId).addClass("disabled");
                 data.sideKick.pageOpened = pageId;
                 main.triggerEvent(main.events.onSideKickPageOpenStart, pageId);
                 page.css('left', data.window.width + 'px');
@@ -222,10 +225,10 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
     }
 
 
-    function closeSideKickPage() {
+    function closeSideKickPage(itemId) {
         if (data.sideKick.pageOpened != undefined) {
             var page = $(data.sideKick.pageOpened),
-                dimensions = main.getWindowDimensions();
+            dimensions = main.getWindowDimensions();
             main.triggerEvent(main.events.onSideKickPageCloseStart, '#' + page.attr('id'));
             page.finish().animate({
                 left: dimensions.width + "px"
@@ -234,8 +237,8 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
                 var pageOpened = data.sideKick.pageOpened;
                 data.sideKick.pageOpened = undefined;
                 main.enableScroll(true);
+                $(itemId).removeClass("disabled");
                 main.triggerEvent(main.events.onSideKickPageClosed, pageOpened);
-
             });
         }
     }
@@ -279,7 +282,6 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
                 }
             } else{
                 if (status) {
-                    console.log(selector.reelElement);
                     $(selector.reelElement).get(0).play();
                 } else {
                     $(selector.reelElement).get(0).pause();

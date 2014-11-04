@@ -88,6 +88,7 @@ define(['jquery', 'bindFirst' , 'main'], function ($, bindFirst, main, undefined
                     height: "toggle"
                 }, data.animationTime, "easeOutQuint", function () {
                     main.triggerEvent(main.events.onMapOpened, pageId);
+                    $('#navbar').removeClass('disabled');
                 });
             }
         }
@@ -97,9 +98,11 @@ define(['jquery', 'bindFirst' , 'main'], function ($, bindFirst, main, undefined
          * se deberia cerrar el mapa.
          */
         function onWindowClose(event, pageId) {
+            $('#navbar').addClass('disabled');
             if (pageId == selector.pageId) {
                 var mapContainer = $(selector.container);
                 main.triggerEvent(main.events.onMapCloseStart, pageId);
+                
                 mapContainer.finish().animate({
                     height: "toggle"
                 }, data.animationTime, "easeInQuad", function () {

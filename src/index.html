@@ -233,10 +233,10 @@
     <div class="header-logo">
         <a class="btn-logo" href="index.html"></a>
     </div>
-    <div class="footer-buttons-left">
+    <div class="footer-buttons-left" id="navbar">
         <a class="btn-nav-left btn-nav-plus disabled" href="#"></a>
         <a class="btn-nav-left btn-sidekick-page btn-nav-whois disabled" href="#"></a>
-        <a class="btn-nav-left btn-sidekick-page btn-nav-contact" href="#page-contact"></a>
+        <a class="btn-nav-left btn-sidekick-page btn-nav-contact" href="#page-contact" id="to-contact-page-link"></a>
     </div>
 </nav>
 
@@ -257,10 +257,9 @@
             mousewheel: 'mousewheel/3.1.9/jquery.mousewheel',
             superSlides: 'superslides/0.6.3/jquery.superslides.min',
             skrollr: 'skrollr/0.6.22/skrollr',
-            randomFade: 'randomFade/1.0.0/randomFade'
         }
     });
-    require(['easing', 'mainUI', 'superSlides', 'mapUI','contacts','randomFade']);
+    require(['easing', 'mainUI', 'superSlides', 'mapUI','contacts']);
 </script>
 
 </body>

@@ -6,7 +6,8 @@
  * onWindowResize:{width: width, height: height})
  **/
 define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
-
+    moveToSection("#section-one");
+    moveToSection("#section-two");
     var selector = {
             sections: 'section',
             noSideKickSections: 'section:not(.sidekick-page)',
@@ -291,6 +292,12 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
         }
     }
 
+    function moveToSection(section){
+        var nextSection = $(section).data('section');
+        $(section).click(function(){
+            $('html,body').animate({scrollTop: $('#'+nextSection).offset().top},1000);
+        });
+    }
     function initJarallax() {
         data.parallax.constants.element = skrollr.init({constants: data.parallax.constants,forceHeight:false});
     }

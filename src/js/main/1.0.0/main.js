@@ -5,7 +5,8 @@
  * Events:
  * onWindowResize:{width: width, height: height})
  **/
-define(['jquery', 'mousewheel'], function ($, mousewheel, undefined) {
+define(['jquery', 'mousewheel'], function ($, main ,mousewheel, undefined) {
+    
     var events = {
             onWindowResize: 'onWindowResize',
             onSideKickPageOpenStart: 'onSideKickPageOpenStart',
@@ -99,6 +100,22 @@ define(['jquery', 'mousewheel'], function ($, mousewheel, undefined) {
                 data.scroll.active = true;
                 triggerEvent(events.onScrollStarted, {scrollPos: $(document).scrollTop(),
                     deltaX: event.deltaX, deltaY: event.deltaY, deltaFactor: event.deltaFactor});
+                    if (event.deltaY == -1){ 
+                        if($(window).scrollTop() >= $('#page-one').offset().top && $(window).scrollTop() < $('#page-two').offset().top/2 ){
+                            jumpToSection('#page-two');
+                        }
+                        else if ($(window).scrollTop() >= $('#page-two').offset().top/2 && $(window).scrollTop() < $('#page-three').offset().top){
+                            jumpToSection('#page-three');
+                        }
+                    } else if(event.deltaY == 1){
+                        if($(window).scrollTop() >= $('#page-two').offset().top && $(window).scrollTop() <= $('#page-two').offset().top+$('#page-two').width()/2){
+                            jumpToSection('#page-two');
+                            console.log("down to up to section 2");
+                        }
+                        else if ($(window).scrollTop() >= $('#page-one').offset().top ){
+                            jumpToSection('#page-one');
+                        }
+                    }
             }
             clearTimeout($.data(this, 'timer'));
             $.data(this, 'timer', setTimeout(function () {
@@ -112,6 +129,10 @@ define(['jquery', 'mousewheel'], function ($, mousewheel, undefined) {
             event.preventDefault();
         }
 
+    }
+
+    function jumpToSection(section){
+        $('html,body').animate({scrollTop: $(section).offset().top},1000);
     }
 
     /**

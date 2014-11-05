@@ -163,10 +163,10 @@ section a.next {
 }
 
 /*Page Four*/
-#page-four{
-
+#page-three, #page-four{
+    background-color:black;
 }
-#page-four video {
+#page-three video, #page-four video {
     height: auto;
     overflow: hidden;
     z-index: 1;

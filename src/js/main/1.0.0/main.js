@@ -179,6 +179,7 @@ define(['jquery', 'mousewheel'], function ($, main ,mousewheel, undefined) {
         getCurrentWebsite: getWindowDimensions,
         enableScroll: enableScroll,
         getCurrentSection: getCurrentSection,
-        changeCurrentSection: changeCurrentSection
+        changeCurrentSection: changeCurrentSection,
+        jumpToSection: jumpToSection
     };
 });

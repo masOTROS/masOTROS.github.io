@@ -6,8 +6,8 @@
  * onWindowResize:{width: width, height: height})
  **/
 define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
-    //moveToSection("#section-one");
-    //moveToSection("#section-two");
+    moveToSection("#section-one");
+    moveToSection("#section-two");
     var selector = {
             sections: 'section',
             noSideKickSections: 'section:not(.sidekick-page)',
@@ -193,8 +193,6 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
     }
 
     function onPageChanged(event, sectionId) {
-        //console.log(event);
-        //console.log(sectionId);
         if (sectionId == selector.sectionOne) {
             playVideo(true,"loopElement");
             $(selector.sectionTwo + ' .slides').superslides('stop');
@@ -234,10 +232,9 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
     }
 
     function moveToSection(section){
-        console.log("move to section");
-        var nextSection = $(section).data('section');
+        var nextSection = $(section).data("section");
         $(section).click(function(){
-            $('html,body').animate({scrollTop: $('#'+nextSection).offset().top},1000);
+            main.jumpToSection(nextSection);
         });
     }
     function initJarallax() {

@@ -20,6 +20,7 @@ section, nav {
     position: relative;
     overflow: hidden;
     min-height: 100%;
+    visibility: hidden;
 }
 
 section a.next {
@@ -152,7 +153,7 @@ section a.next {
 
 /* Page Two */
 #page-two {
-    background-image: Url(../img/placements/1a.jpg);
+    background-color:black;
 }
 
 /*Page Three*/

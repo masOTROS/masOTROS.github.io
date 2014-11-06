@@ -38,14 +38,6 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
                 animationTime: 900,
                 lastSection: undefined
             },
-            scroll: {
-                animationTime: 900,
-                startPos: 0,
-                moveNextSectionAt: 0,
-                deltaFactor: 0,
-                actualDelta: 1,
-                animating: false
-            },
             slider: {
                 easing: 'easeInOutQuad',
                 animationTime: 2000,
@@ -120,6 +112,7 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
         var elem = $(selector.sections + ', ' + selector.containers + ', ' + selector.navigation);
         elem.css('width', obj.width);
         elem.css('height', obj.height);
+        elem.css('visibility', 'visible');
         elem = $(selector.images);
         elem.attr('height', obj.height);
         elem.filter(selector.closeSideKickPages).css('left', obj.width);

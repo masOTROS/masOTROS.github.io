@@ -6,8 +6,8 @@
  * onWindowResize:{width: width, height: height})
  **/
 define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
-    moveToSection("#section-one");
-    moveToSection("#section-two");
+    //moveToSection("#section-one");
+    //moveToSection("#section-two");
     var selector = {
             sections: 'section',
             noSideKickSections: 'section:not(.sidekick-page)',
@@ -15,8 +15,6 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
             containers: 'section > .container',
             images: 'section img',
             slider: '.slides',
-            sliderOne: '#page-one .slides',
-            sliderTwo: '#page-three .slides',
             body: 'body',
             sidekickButtons: '.footer-buttons-left > .btn-nav-left.btn-sidekick-page',
             sideKickPages: '.sidekick-page',
@@ -25,7 +23,6 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
             sectionOne: '#page-one',
             sectionTwo: '#page-two',
             sectionThree: '#page-three',
-            sectionFour: '#page-four',
             loopElement: '#loop-element',
             reelElement: '#reel-element',
             navBar : '#navbar'
@@ -111,8 +108,6 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
             main.changeCurrentSection(data.sideKick.lastSection);
             $('a[href=' + selector + ']').removeClass('selected');
         }, false);
-        /*main.registerEvent(main.events.onScrollStarted, onScrollStarted, false); */
-        main.registerEvent(main.events.onScroll, onScroll, false);
         main.registerEvent(main.events.onPageChanged, onPageChanged, false);
     }
 
@@ -128,53 +123,6 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
         elem = $(selector.images);
         elem.attr('height', obj.height);
         elem.filter(selector.closeSideKickPages).css('left', obj.width);
-    }
-
-    /**
-     * Cambia la UI en base a la posicion del scroll.
-     */
-    function onScrollStarted(event, obj) {
-        if (!data.scroll.animating) {
-            data.scroll.actualDelta = obj.deltaY;
-            var $divs = $(selector.noSideKickSections);
-            var top = $.grep($divs, function (item) {
-                var pos = $(document).scrollTop(),
-                    itemPos = Math.floor($(item).position().top),
-                    itemHeight = data.window.height;
-                return (obj.deltaY < 0) ? pos < itemPos && itemPos <= pos + itemHeight : pos > itemPos && itemPos >= pos - itemHeight;
-            });
-            if (top.length > 0) {
-                main.enableScroll(false);
-                var movement = Math.ceil($(top).first().position().top);
-                data.scroll.animating = true;
-                $('html').animate({ scrollTop: movement }, data.scroll.animationTime / Math.abs(obj.deltaY),
-                    "easeOutQuint", function () {
-                        data.scroll.startPos = $(document).scrollTop();
-
-                        var $divs = $(selector.noSideKickSections);
-                        var top = $.grep($divs, function (item) {
-                            return $(item).position().top <= data.scroll.startPos;
-                        });
-
-                        main.enableScroll(true);
-                        data.scroll.animating = false;
-                    });
-            }
-        }
-    }
-
-    /**
-     * Cambia la UI en base a la posicion del scroll.
-     */
-    function onScroll(event, obj) {
-        var winTop = $(document).scrollTop();
-        var divs = $(selector.noSideKickSections);
-        var top = $.grep(divs, function (item) {
-            return $(item).position().top <= winTop;
-        });
-        if (top.length > 0) {
-            main.changeCurrentSection('#' + $(top[top.length - 1]).attr('id'));
-        }
     }
 
 
@@ -245,30 +193,23 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
     }
 
     function onPageChanged(event, sectionId) {
+        //console.log(event);
+        //console.log(sectionId);
         if (sectionId == selector.sectionOne) {
             playVideo(true,"loopElement");
             $(selector.sectionTwo + ' .slides').superslides('stop');
-            $(selector.sectionThree + ' .slides').superslides('stop');
             playVideo(false, "reelElement");
         } else if (sectionId == selector.sectionTwo) {
             playVideo(false,"loopElement");
             $(selector.sectionTwo + ' .slides').superslides('start');
-            $(selector.sectionThree + ' .slides').superslides('stop');
             playVideo(false, "reelElement");
         } else if (sectionId == selector.sectionThree) {
             playVideo(false,"loopElement");
             $(selector.sectionTwo + ' .slides').superslides('stop');
-            $(selector.sectionThree + ' .slides').superslides('start');
-            playVideo(false, "reelElement");
-        } else if (sectionId == selector.sectionFour) {
-            playVideo(false,"loopElement");
-            $(selector.sectionTwo + ' .slides').superslides('stop');
-            $(selector.sectionThree + ' .slides').superslides('start');
             playVideo(true, "reelElement");
         } else {
-            $(selector.sectionOne + ' .slides').superslides('stop');
             playVideo(false,"loopElement");
-            $(selector.sectionThree + ' .slides').superslides('stop');
+            $(selector.sectionTwo + ' .slides').superslides('stop');
             playVideo(false, "reelElement");
         }
     }
@@ -293,6 +234,7 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
     }
 
     function moveToSection(section){
+        console.log("move to section");
         var nextSection = $(section).data('section');
         $(section).click(function(){
             $('html,body').animate({scrollTop: $('#'+nextSection).offset().top},1000);

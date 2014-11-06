@@ -6,7 +6,7 @@
  * onWindowResize:{width: width, height: height})
  **/
 define(['jquery', 'mousewheel'], function ($, main ,mousewheel, undefined) {
-    
+    var scrollTimer;
     var events = {
             onWindowResize: 'onWindowResize',
             onSideKickPageOpenStart: 'onSideKickPageOpenStart',
@@ -19,9 +19,6 @@ define(['jquery', 'mousewheel'], function ($, main ,mousewheel, undefined) {
             onMapOpened: 'onMapOpened',
             onMapClosed: 'onMapClosed',
             onMapCloseStart: 'onMapCloseStart',
-            onScrollStarted: 'onScrollStarted',
-            onScroll: 'onScroll',
-            onScrollFinished: 'onScrollFinished'
         },
         selector = {
             eventRepository: document,
@@ -36,7 +33,7 @@ define(['jquery', 'mousewheel'], function ($, main ,mousewheel, undefined) {
             scroll: {
                 enabled: true,
                 active: false,
-                finishWaitTime: 100
+                finishWaitTime: 1000
             },
             currentSectionId: undefined
         };
@@ -98,41 +95,35 @@ define(['jquery', 'mousewheel'], function ($, main ,mousewheel, undefined) {
         if (data.scroll.enabled) {
             if (!data.scroll.active) {
                 data.scroll.active = true;
-                triggerEvent(events.onScrollStarted, {scrollPos: $(document).scrollTop(),
-                    deltaX: event.deltaX, deltaY: event.deltaY, deltaFactor: event.deltaFactor});
                     if (event.deltaY == -1){ 
-                        if($(window).scrollTop() >= $('#page-one').offset().top && $(window).scrollTop() < $('#page-two').offset().top/2 ){
+                        if($(window).scrollTop() >= $('#page-one').offset().top && $(window).scrollTop() < $('#page-two').offset().top){
                             jumpToSection('#page-two');
                         }
-                        else if ($(window).scrollTop() >= $('#page-two').offset().top/2 && $(window).scrollTop() < $('#page-three').offset().top){
+                        else if($(window).scrollTop() >= $('#page-two').offset().top && $(window).scrollTop() < $('#page-three').offset().top){
                             jumpToSection('#page-three');
                         }
                     } else if(event.deltaY == 1){
-                        if($(window).scrollTop() >= $('#page-two').offset().top && $(window).scrollTop() <= $('#page-two').offset().top+$('#page-two').width()/2){
-                            jumpToSection('#page-two');
-                            console.log("down to up to section 2");
-                        }
-                        else if ($(window).scrollTop() >= $('#page-one').offset().top ){
+                        if($(window).scrollTop() >= $('#page-two').offset().top && $(window).scrollTop() < $('#page-three').offset().top){
                             jumpToSection('#page-one');
                         }
+                        else if($(window).scrollTop() >= $('#page-three').offset().top){
+                            jumpToSection('#page-two');
+                        }
                     }
+                clearTimeout(scrollTimer);
+                scrollTimer=setTimeout(function () {
+                    data.scroll.active = false;
+                }, data.scroll.finishWaitTime);
             }
-            clearTimeout($.data(this, 'timer'));
-            $.data(this, 'timer', setTimeout(function () {
-                data.scroll.active = false;
-                triggerEvent(events.onScrollFinished, {scrollPos: $(document).scrollTop()});
-            }, data.scroll.finishWaitTime));
-            triggerEvent(events.onScroll, {deltaX: event.deltaX, deltaY: event.deltaY,
-                deltaFactor: event.deltaFactor});
-        } else {
-            event.stopPropagation();
-            event.preventDefault();
         }
+        event.stopPropagation();
+        event.preventDefault();
 
     }
 
     function jumpToSection(section){
-        $('html,body').animate({scrollTop: $(section).offset().top},1000);
+        $('html,body').animate({scrollTop: $(section).offset().top},data.scroll.finishWaitTime);
+        changeCurrentSection(section);
     }
 
     /**
@@ -165,7 +156,7 @@ define(['jquery', 'mousewheel'], function ($, main ,mousewheel, undefined) {
      * @return id de la seccion actual.
      */
     function getCurrentSection() {
-        return data.currentSectionId
+        return data.currentSectionId;
     }
 
     /**

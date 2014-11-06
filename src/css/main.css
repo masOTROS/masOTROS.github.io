@@ -152,21 +152,15 @@ section a.next {
 
 /* Page Two */
 #page-two {
-    background-image: Url(../img/placements/ciudad2_1382x778.jpeg);
+    background-image: Url(../img/placements/1a.jpg);
 }
 
-
-
-/* Page Three */
-#page-three {
-    background-image: Url(../img/placements/ciudad3_1382x778.jpeg);
-}
-
-/*Page Four*/
-#page-three, #page-four{
+/*Page Three*/
+#page-three{
     background-color:black;
 }
-#page-three video, #page-four video {
+
+#page-three video{
     height: auto;
     overflow: hidden;
     z-index: 1;

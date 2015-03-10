@@ -1,4 +1,10 @@
 /* Commons */
+
+@font-face {
+    font-family: masOtrosFont;
+    src: url(css/conduit_bold.woff);
+}
+
 body {
     overflow-x: hidden;
 }
@@ -6,6 +12,8 @@ body {
 .hide {
     display: none;
 }
+
+
 
 section, nav {
     width: 100%;
@@ -81,13 +89,13 @@ section a.next {
 .slides .container{
     text-align:right;
     background: rgba(0,0,0,0.4);
-    font-family: 'Oswald', sans-serif;
+    font-family: masOtrosFont;
     font-size: 32px;
     padding: 4px 4% 4px 10px;
     position:absolute;
     color:white;
     right:0;
-    top:200px;
+    top:100px;
 }
 
 .disabled{

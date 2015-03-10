@@ -7,6 +7,11 @@
 /**
  * Correct `block` display not defined in IE 8/9.
  */
+ 
+ @font-face {
+    font-family: masOtrosFont;
+    src: url(conduit_bold.woff);
+}
 
 article,
 aside,
@@ -64,7 +69,7 @@ template {
  */
 
 html {
-    font-family: sans-serif; /* 1 */
+    font-family: masOtrosFont, sans-serif; /* 1 */
     -ms-text-size-adjust: 100%; /* 2 */
     -webkit-text-size-adjust: 100%; /* 2 */
 }

@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: masOtrosFont;
-    src: url(css/conduit_bold.woff);
+    src: url(conduit_bold.woff);
 }
 
 body {
@@ -122,8 +122,8 @@ section a.next {
 }
 
 .phrase-container > p {
-    font-family: 'Oswald', sans-serif;
-    font-size: 32px;
+    font-family: masOtrosFont, sans-serif;
+    font-size: 40px;
     margin: 0;
     color: #ffffff;
     display: table;

@@ -99,16 +99,16 @@ define(['jquery', 'mousewheel'], function ($, main ,mousewheel, undefined) {
                         if($(window).scrollTop() >= $('#page-one').offset().top && $(window).scrollTop() < $('#page-two').offset().top){
                             jumpToSection('#page-two');
                         }
-                        else if($(window).scrollTop() >= $('#page-two').offset().top && $(window).scrollTop() < $('#page-three').offset().top){
-                            jumpToSection('#page-three');
-                        }
+                       // else if($(window).scrollTop() >= $('#page-two').offset().top && $(window).scrollTop() < $('#page-three').offset().top){
+                         //   jumpToSection('#page-three');
+                       // }
                     } else if(event.deltaY == 1){
-                        if($(window).scrollTop() >= $('#page-two').offset().top && $(window).scrollTop() < $('#page-three').offset().top){
+                        if($(window).scrollTop() >= $('#page-two').offset().top){
                             jumpToSection('#page-one');
                         }
-                        else if($(window).scrollTop() >= $('#page-three').offset().top){
-                            jumpToSection('#page-two');
-                        }
+                     //   else if($(window).scrollTop() >= $('#page-three').offset().top){
+                      //      jumpToSection('#page-two');
+                       // }
                     }
                 clearTimeout(scrollTimer);
                 scrollTimer=setTimeout(function () {

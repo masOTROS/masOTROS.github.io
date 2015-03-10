@@ -22,7 +22,7 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
             openSideKickPage: '.sidekick-page.open',
             sectionOne: '#page-one',
             sectionTwo: '#page-two',
-            sectionThree: '#page-three',
+            //sectionThree: '#page-three',
             loopElement: '#loop-element',
             reelElement: '#reel-element',
             navBar : '#navbar'
@@ -194,10 +194,10 @@ define(['jquery', 'main', 'skrollr'], function ($, main, skrollr, undefined) {
             playVideo(false,"loopElement");
             $(selector.sectionTwo + ' .slides').superslides('start');
             playVideo(false, "reelElement");
-        } else if (sectionId == selector.sectionThree) {
-            playVideo(false,"loopElement");
-            $(selector.sectionTwo + ' .slides').superslides('stop');
-            playVideo(true, "reelElement");
+	  //}else if (sectionId == selector.sectionThree) {
+        //    playVideo(false,"loopElement");
+          //  $(selector.sectionTwo + ' .slides').superslides('stop');
+           // playVideo(true, "reelElement");
         } else {
             playVideo(false,"loopElement");
             $(selector.sectionTwo + ' .slides').superslides('stop');

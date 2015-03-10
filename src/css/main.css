@@ -1,8 +1,12 @@
 /* Commons */
 
 @font-face {
-    font-family: masOtrosFont;
+    font-family: masOtrosFontBold;
     src: url(conduit_bold.woff);
+}
+@font-face {
+    font-family: masOtrosFont;
+    src: url(conduit.woff);
 }
 
 body {
@@ -89,8 +93,8 @@ section a.next {
 .slides .container{
     text-align:right;
     background: rgba(0,0,0,0.4);
-    font-family: masOtrosFont;
-    font-size: 32px;
+    font-family: masOtrosFont,sans-serif;
+    font-size: 20px;
     padding: 4px 4% 4px 10px;
     position:absolute;
     color:white;
@@ -122,8 +126,8 @@ section a.next {
 }
 
 .phrase-container > p {
-    font-family: masOtrosFont, sans-serif;
-    font-size: 40px;
+    font-family: masOtrosFontBold, sans-serif;
+    font-size: 30px;
     margin: 0;
     color: #ffffff;
     display: table;

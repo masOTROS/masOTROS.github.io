@@ -94,7 +94,7 @@ section a.next {
     text-align:right;
     background: rgba(0,0,0,0.4);
     font-family: masOtrosFont,sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     padding: 4px 4% 4px 10px;
     position:absolute;
     color:white;
@@ -126,8 +126,8 @@ section a.next {
 }
 
 .phrase-container > p {
-    font-family: masOtrosFontBold, sans-serif;
-    font-size: 30px;
+    font-family: masOtrosFont, sans-serif;
+    font-size: 25px;
     margin: 0;
     color: #ffffff;
     display: table;

@@ -127,11 +127,11 @@ section a.next {
 
 .phrase-container > p {
     font-family: masOtrosFont, sans-serif;
-    font-size: 25px;
+    font-size: 27px;
     margin: 0;
-    color: #ffffff;
+    color: #000000;
     display: table;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255,255,255,0.85);
     padding: 4px 0 4px 4%;
 }
 
